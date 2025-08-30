@@ -34,8 +34,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    kotlin {
+        jvmToolchain(21)
     }
 
     buildFeatures {
@@ -50,40 +54,45 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx.v1131)
-    implementation(libs.androidx.lifecycle.runtime.ktx.v284)
-    implementation(libs.androidx.activity.compose.v190)
-    implementation(libs.androidx.navigation.compose)
+    // Core
+    implementation(libs.androidx.core.ktx)
 
-    // ✅ Use Compose BOM (latest June 2024)
-    implementation(platform(libs.androidx.compose.bom.v20240600))
-
-    // Compose UI + Material3
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
-    implementation(libs.androidx.material.icons.extended)
-    implementation(libs.androidx.animation)
-    implementation(libs.androidx.compose.material3.material3)
-
-    // Debug tooling
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
-
-    // ViewModel + Lifecycle
+    // Lifecycle & ViewModel
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    // DataStore (for saving XP/quests)
+    // Activity & Navigation
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
+
+    // Jetpack Compose BOM
+    implementation(platform(libs.androidx.compose.bom))
+
+    // Compose UI & Material3
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.animation)
+
+    // Debugging
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+
+    // DataStore Preferences (fixed)
     implementation(libs.androidx.datastore.preferences)
 
-    // Kotlin serialization
-    implementation(libs.jetbrains.kotlinx.serialization.json)
+    // Kotlin Serialization
+    implementation(libs.kotlinx.serialization.json)
 
-    // (Optional) Testing
+    // Testing
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit.v121)
-    androidTestImplementation(libs.androidx.espresso.core.v361)
-    androidTestImplementation(platform(libs.androidx.compose.bom.v20240600))
-    androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
 }
+
+
 
