@@ -24,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".NotificationReceiver" android:exported="false" />
-        <receiver android:name=".BootReceiver" android:exported="false">
+        <receiver android:name=".notifications.NotificationReceiver" android:exported="false" />
+        <receiver android:name=".notifications.BootReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

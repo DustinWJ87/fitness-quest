@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FitnessQuest</string>
+    <string name="daily_quests">Your Daily Quests Text</string>
 </resources>
